@@ -26,7 +26,7 @@
 		<script src="<?php echo base_url("assets/bootstrap/js/bootstrap.min.js"); ?>"></script>
 	</head>
 
-	<link rel="SHORTCUT ICON" href="http://www.mutan.or.id/logo/favicon.png" />
+	<link rel="shortcut icon" href="<?php echo base_url("assets/img/favicon.png"); ?>" />
 		<body>
 		<div class="container">
 
