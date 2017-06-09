@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="box box-primary">
+        <div class="box box-success">
             <div class="box-header with-border">
                 <h3 class="box-title">Form Upload Logo</h3>
                 <div class="box-tools pull-right">

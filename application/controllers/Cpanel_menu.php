@@ -88,6 +88,7 @@ class Cpanel_menu extends CI_Controller
 
         // hapus di table menu
         $this->mm->delete_menu($id);
+        
         redirect('cpanel_menu');
     }
 
@@ -124,13 +125,13 @@ class Cpanel_menu extends CI_Controller
             $id_menu = $row_menu->menu_id;
 
             // simpan ke table hak_akses
-            for ($i = reset($ur_id); $i <= count($ur_id); $i++)
+            foreach ($ur_id as $keyUrId => $valUrId)
             {
-                $arr_data_ha["ha_view"] = is_null($ha_view) ? 0: (array_key_exists($i, $ha_view) ? $ha_view[$i] : 0);
-                $arr_data_ha["ha_insert"] = is_null($ha_insert) ? 0: (array_key_exists($i, $ha_insert) ? $ha_insert[$i] : 0);
-                $arr_data_ha["ha_update"] = is_null($ha_update) ? 0 : (array_key_exists($i, $ha_update) ? $ha_update[$i] : 0);
-                $arr_data_ha["ha_delete"] = is_null($ha_delete) ? 0 : (array_key_exists($i, $ha_delete) ? $ha_delete[$i] : 0);
-                $arr_data_ha["ha_ur"] = is_null($ur_id) ? "" : (array_key_exists($i, $ur_id) ? $ur_id[$i] : "");
+                $arr_data_ha["ha_view"] = is_null($ha_view) ? 0: (array_key_exists($i, $ha_view) ? $ha_view[$valUrId] : 0);
+                $arr_data_ha["ha_insert"] = is_null($ha_insert) ? 0: (array_key_exists($valUrId, $ha_insert) ? $ha_insert[$valUrId] : 0);
+                $arr_data_ha["ha_update"] = is_null($ha_update) ? 0 : (array_key_exists($valUrId, $ha_update) ? $ha_update[$valUrId] : 0);
+                $arr_data_ha["ha_delete"] = is_null($ha_delete) ? 0 : (array_key_exists($valUrId, $ha_delete) ? $ha_delete[$valUrId] : 0);
+                $arr_data_ha["ha_ur"] = is_null($ur_id) ? "" : (array_key_exists($valUrId, $ur_id) ? $ur_id[$valUrId] : "");
                 $arr_data_ha["ha_menu"] = $id_menu;
 
                 $this->mm->save_ha($arr_data_ha);
@@ -146,34 +147,34 @@ class Cpanel_menu extends CI_Controller
             $this->mm->update_menu($menu_id, $data_menu);
 
             // simpan ke table hak_akses
-            for ($i = reset($ur_id); $i <= count($ur_id); $i++)
+            foreach ($ur_id as $key_urId => $val_urId)
             {
-                $arr_data_ha["ha_view"] = is_null($ha_view) ? 0: (array_key_exists($i, $ha_view) ? $ha_view[$i] : 0);
-                $arr_data_ha["ha_insert"] = is_null($ha_insert) ? 0: (array_key_exists($i, $ha_insert) ? $ha_insert[$i] : 0);
-                $arr_data_ha["ha_update"] = is_null($ha_update) ? 0 : (array_key_exists($i, $ha_update) ? $ha_update[$i] : 0);
-                $arr_data_ha["ha_delete"] = is_null($ha_delete) ? 0 : (array_key_exists($i, $ha_delete) ? $ha_delete[$i] : 0);
-                // $arr_data_ha["ha_ur"] = is_null($ur_id) ? "" : (array_key_exists($i, $ur_id) ? $ur_id[$i] : "");
+                $arr_data_ha["ha_view"] = is_null($ha_view) ? 0: (array_key_exists($val_urId, $ha_view) ? $ha_view[$val_urId] : 0);
+                $arr_data_ha["ha_insert"] = is_null($ha_insert) ? 0: (array_key_exists($val_urId, $ha_insert) ? $ha_insert[$val_urId] : 0);
+                $arr_data_ha["ha_update"] = is_null($ha_update) ? 0 : (array_key_exists($val_urId, $ha_update) ? $ha_update[$val_urId] : 0);
+                $arr_data_ha["ha_delete"] = is_null($ha_delete) ? 0 : (array_key_exists($val_urId, $ha_delete) ? $ha_delete[$val_urId] : 0);
 
                 // cek apakah data ada di table hak akses?
                 $arr_check["ha_menu"] = $menu_id;
-                $arr_check["ha_ur"] = $ur_id[$i];
+                $arr_check["ha_ur"] = $ur_id[$val_urId];
                 $cek_ha = $this->mm->count_data("hak_akses", $arr_check);
                 // echo $cek_ha;
 
                 if ($cek_ha === 0)
                 {
                     $arr_data_ha["ha_menu"] = $menu_id;
-                    $arr_data_ha["ha_ur"] = $ur_id[$i];
+                    $arr_data_ha["ha_ur"] = $ur_id[$val_urId];
                     $this->mm->save_ha($arr_data_ha);
                 }
                 else
                 {
                     $where_ha["ha_menu"] = $menu_id;
-                    $where_ha["ha_ur"] = $ur_id[$i];
+                    $where_ha["ha_ur"] = $ur_id[$val_urId];
                     // echo $this->db->where("ha_menu=$menu_id AND ha_ur=$ur_id[$i]")->set($arr_data_ha)->get_compiled_update("hak_akses");exit;
                     $this->mm->update_ha($where_ha, $arr_data_ha);
                 }
             }
+
             redirect('cpanel_menu');
         }
         // access function without click the button #sok_bahasa_inggris

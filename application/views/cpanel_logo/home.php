@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <div class="row">
     <div class="col-md-12">
-        <div class="box box-primary">
+        <div class="box box-success">
             <div class="box-header with-border">
                 <h3 class="box-title">List Logo</h3>
                 <div class="box-tools pull-right">

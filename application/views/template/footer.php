@@ -31,7 +31,7 @@
 									<div class="col-md-<?php echo 12/$total_fhl; ?>">
 										<div class="panel panel-footer-tara">
 											<div class="panel-heading">
-												<h3class="panel-title"><?php echo ucwords($val_fhl->fhl_header); ?></h3>
+												<h3class="panel-title"><b><?php echo ucwords($val_fhl->fhl_header); ?></b></h3>
 											</div>
 											<div class="panel-body">
 												<ul class="tara-ul-link">

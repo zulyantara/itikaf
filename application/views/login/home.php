@@ -52,7 +52,7 @@
     </div>
 
     <!-- jQuery if needed -->
-    <script type="text/javascript" src="<?php echo base_url('assets/plugins/jQuery/jquery-3.1.1.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/plugins/jQuery/jquery-3.1.1.min.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/plugins/jQuery/jquery.placeholder.min.js'); ?>"></script>
     <script type="text/javascript">
     $(function(){

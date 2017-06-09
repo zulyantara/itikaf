@@ -85,7 +85,7 @@ class Cpanel_peserta_aktif extends CI_Controller
         $this->_cek_delete();
 
         // hapus di table peserta_aktif
-        $this->mm->delete_peserta_aktif($id);
+        $this->mm->delete_peserta($id);
 
         // hapus di table itikaf
         $this->mm->delete_itikaf($id);

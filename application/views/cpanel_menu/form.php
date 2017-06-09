@@ -10,12 +10,12 @@ $btn = isset($res_menu) ? "ubah" : "simpan";
 ?>
 <div class="row">
     <div class="col-md-12">
-        <div class="box box-primary">
+        <div class="box box-success">
             <div class="box-header with-border">
                 <h3 class="box-title">Form Menu</h3>
                 <div class="box-tools pull-right">
                     <div class="btn-group" role="group" aria-label="...">
-                        <a href="<?php echo site_url('cpanel_user_role'); ?>" class="btn btn-primary btn-sm btn-flat">Tambah User Role</a>
+                        <a href="<?php echo site_url('cpanel_user_role/tambah_data'); ?>" class="btn btn-primary btn-sm btn-flat">Tambah User Role</a>
                         <a href="<?php echo site_url('cpanel_menu'); ?>" class="btn btn-primary btn-sm btn-flat">List Menu</a>
                     </div>
                 </div>
