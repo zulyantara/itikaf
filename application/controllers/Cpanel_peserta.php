@@ -32,8 +32,8 @@ class Cpanel_peserta extends CI_Controller
             $row[] = $peserta->peserta_hp;
             $row[] = $peserta->itikaf_mulai;
             $row[] = $peserta->konsumsi_ket;
-            $row[] = $peserta->peserta_foto;
-            $row[] = $peserta->peserta_ktp;
+            $row[] = $aktivasi->peserta_foto == "" ? "<div class=\"label label-warning\">Blm Upload Foto</div>" : "<div class=\"label label-success\">Sudah Upload Foto</div>";
+            $row[] = $aktivasi->peserta_ktp == "" ? "<div class=\"label label-warning\">Blm Upload KTP</div>" : "<div class=\"label label-success\">Sudah Upload KTP</div>";
             $row[] = $peserta->status;
             $row[] = "
                 <div class=\"btn-group\" role=\"group\" aria-label=\"...\">
