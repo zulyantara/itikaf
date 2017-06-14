@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
+
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-success tara-no-radius">
@@ -10,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="panel-body">
 
                 <?php echo isset($error) ? "<div class=\"alert alert-danger\" role=\"alert\">".$error."</div>" : ""; ?>
-                <form class="form-horizontal" action="<?php echo site_url('pendaftaran/proses_pendaftaran'); ?>" method="post" enctype="multipart/form-data">
+                <form class="form-horizontal" action="<?php echo site_url('pendaftaran/proses_pendaftaran'); ?>" method="post" enctype="multipart/form-data" id="frmPendaftaran">
                     <div class="panel panel-success">
                         <div class="panel-heading panel-heading-tara">
                             <h3 class="panel-title">Personal Detail</h3>
@@ -21,7 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="col-sm-10">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <input type="text" name="nama_lengkap" id="nama_lengkap" placeholder="Nama Lengkap" required="required" autofocus="autofocus" class="form-control">
+                                            <input type="text" name="nama_lengkap" id="nama_lengkap" placeholder="Nama Lengkap" autofocus="autofocus" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -32,7 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="col-sm-10">
                                     <div class="row">
                                         <div class="col-sm-2">
-                                            <select class="form-control" name="sex" id="sex" required="required">
+                                            <select class="form-control" name="sex" id="sex">
                                                 <option value="l">Ikhwan</option>
                                                 <option value="p">Akhwat</option>
                                             </select>
@@ -46,7 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="col-sm-10">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <input type="text" name="tempat_lahir" id="tempat_lahir" placeholder="Tempat Lahir" required="required" class="form-control">
+                                            <input type="text" name="tempat_lahir" id="tempat_lahir" placeholder="Tempat Lahir" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -57,7 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="col-sm-10">
                                     <div class="row">
                                         <div class="col-sm-2">
-                                            <select class="form-control" name="thn_lahir" required="required">
+                                            <select class="form-control" name="thn_lahir">
                                                 <?php
                                                 for($i=date('Y')-70; $i < date('Y')-1; $i++)
                                                 {
@@ -93,7 +94,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             </select>
                                         </div>
                                         <div class="col-sm-2">
-                                            <select class="form-control" name="tgl_lahir" required="required" id="tgl_lahir">
+                                            <select class="form-control" name="tgl_lahir" id="tgl_lahir">
                                                 <?php
                                                 for($t=1; $t <= 31; $t++)
                                                 {
@@ -113,7 +114,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="col-sm-10">
                                     <div class="row">
                                         <div class="col-sm-3">
-                                            <select class="form-control" name="status_pernikahan" id="status_pernikahan" required="required">
+                                            <select class="form-control" name="status_pernikahan" id="status_pernikahan">
                                                 <option value="1">Menikah</option>
                                                 <option value="0">Belum Menikah</option>
                                                 <option value="2">Duda</option>
@@ -129,7 +130,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="col-sm-10">
                                     <div class="row">
                                         <div class="col-sm-6">
-                                            <textarea name="alamat" rows="3" cols="80" placeholder="Alamat Sekarang" required="required" class="form-control"></textarea>
+                                            <textarea name="alamat" rows="3" cols="80" placeholder="Alamat Sekarang" class="form-control"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -140,7 +141,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="col-sm-10">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <select class="form-control" name="kota" id="kota" required="required">
+                                            <select class="form-control" name="kota" id="kota">
                                                 <option>Pilih Kota</option>
                                                 <?php
                                                 if ($res_kota !== FALSE)
@@ -164,7 +165,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="col-sm-10">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <select class="form-control" name="kartu_identitas" id="kartu_identitas" required="required">
+                                            <select class="form-control" name="kartu_identitas" id="kartu_identitas">
                                                 <option>Pilih Kartu Identitas</option>
                                                 <?php
                                                 if ($res_ki !== FALSE)
@@ -188,7 +189,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="col-sm-10">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <input type="text" name="no_kartu_identitas" id="no_kartu_identitas" placeholder="No Kartu Identitas" required="required" class="form-control">
+                                            <input type="text" name="no_kartu_identitas" id="no_kartu_identitas" placeholder="No Kartu Identitas" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -229,7 +230,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="col-sm-10">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <input type="text" name="hp" id="hp" placeholder="HP" required="required" class="form-control">
+                                            <input type="text" name="hp" id="hp" placeholder="HP" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -305,7 +306,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="col-sm-10">
                                     <div class="row">
                                         <div class="col-sm-2">
-                                            <select class="form-control" name="mulai_itikaf" id="mulai_itikaf" required="required">
+                                            <select class="form-control" name="mulai_itikaf" id="mulai_itikaf">
                                                 <option value="20">20</option>
                                                 <option value="21">21</option>
                                                 <option value="22">22</option>
@@ -327,7 +328,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="col-sm-10">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <select class="form-control" name="konsumsi" id="konsumsi" required="required">
+                                            <select class="form-control" name="konsumsi" id="konsumsi">
                                                 <option>Pilih Pengaturan Konsumsi</option>
                                                 <?php
                                                 if ($res_konsumsi !== FALSE)
@@ -351,7 +352,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="col-sm-10">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <select class="form-control" name="sumber_informasi" id="sumber_informasi" required="required">
+                                            <select class="form-control" name="sumber_informasi" id="sumber_informasi">
                                                 <option>Pilih Sumber Informasi</option>
                                                 <?php
                                                 if ($res_si !== FALSE)
@@ -372,7 +373,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                     </div>
 
-                    <div class="panel panel-success">
+                    <!-- <div class="panel panel-success">
                         <div class="panel-heading panel-heading-tara">
                             <h3 class="panel-title">Kelengkapan Data (Wajib)</h3>
                         </div>
@@ -380,18 +381,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="form-group">
                                 <label for="upload_photo" class="control-label col-sm-2">Upload Photo</label>
                                 <div class="col-sm-10">
-                                    <input type="file" name="upload_photo" required="required">
+                                    <input type="file" name="upload_photo">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="upload_ktp" class="control-label col-sm-2">Upload Kartu Identitas</label>
                                 <div class="col-sm-10">
-                                    <input type="file" name="upload_ktp" required="required">
+                                    <input type="file" name="upload_ktp">
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="panel panel-success">
                         <div class="panel-heading panel-heading-tara">
@@ -403,7 +404,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="col-sm-10">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <input type="text" name="username" id="username" placeholder="Username" required="required" class="form-control">
+                                            <input type="text" name="username" id="username" placeholder="Username" class="form-control">
                                             <span id="helpUsername" class="help-block"></span>
                                         </div>
                                     </div>
@@ -415,7 +416,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="col-sm-10">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <input type="password" name="password" id="password" placeholder="Password" required="required" class="form-control">
+                                            <input type="password" name="password" id="password" placeholder="Password" class="form-control">
                                         </div>
                                         <div class="col-sm-12">
                                             <span id="helpPassword" class="help-block"></span>
@@ -425,11 +426,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
 
                             <div class="form-group">
-                                <label class="col-sm-2 control-label" for="repeat_password">Repeat Password</label>
+                                <label class="col-sm-2 control-label" for="confirm_password">Repeat Password</label>
                                 <div class="col-sm-10">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <input type="password" id="repeat_password" placeholder="Repeat Password" required="required" class="form-control">
+                                            <input type="password" id="confirm_password" placeholder="Repeat Password" class="form-control">
+                                            <span id="helpRepeatPassword" class="help-block"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -502,13 +504,31 @@ $(document).ready(function () {
     });
 
     // cek repeat password
-    $("#repeat_password").blur(function(){
-        var pwd = $("#password").val();
-        var rpwd = $("#repeat_password").val();
-        if (rpwd != pwd)
-        {
-            $("#helpPassword").html("Password tidak sama!");
-            $("#password").focus();
+    $("#frmPendaftaran").validate({
+        rules:{
+            username: {
+                required: true
+            },
+            password: {
+                required: true,
+                minlength: 5
+            },
+            confirm_password: {
+                required: true,
+                equalTo: "#password"
+            }
+        },
+        messages: {
+            username: {
+                required: "Please enter a username"
+            },
+            password: {
+                required: "Please provide a password"
+            },
+            confirm_password: {
+                required: "Please provide a password",
+                equalTo: "Please enter the same password as above"
+            },
         }
     });
 });

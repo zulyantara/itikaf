@@ -29,10 +29,11 @@ class Cpanel_peserta_aktif extends CI_Controller
             $row = array();
             $row[] = '<div class="uk-text-center">'.$no.'</div>';
             $row[] = $peserta_aktif->peserta_nama;
-            $row[] = $peserta_aktif->peserta_sex;
-            $row[] = $peserta_aktif->kota_ket;
             $row[] = $peserta_aktif->peserta_hp;
-            $row[] = $peserta_aktif->peserta_status_pernikahan;
+            $row[] = $peserta_aktif->itikaf_mulai;
+            $row[] = $peserta_aktif->konsumsi_ket;
+            $row[] = $peserta_aktif->peserta_foto;
+            $row[] = $peserta_aktif->peserta_ktp;
             $row[] = "
                 <div class=\"btn-group\" role=\"group\" aria-label=\"...\">
                     <a href=\"".site_url("cpanel_peserta_aktif/edit_data/".$peserta_aktif->peserta_id)."\" class=\"btn btn-primary btn-flat btn-xs\">Edit</a>

@@ -4,8 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Peserta_aktif_model extends CI_Model
 {
     var $table = 'peserta';
-    var $column_order = array(null, 'peserta_nama','peserta_sex','kota_ket','peserta_hp','peserta_status_pernikahan'); //set column field database for datatable orderable
-    var $column_search = array( 'peserta_nama','peserta_sex','kota_ket','peserta_hp','peserta_status_pernikahan'); //set column field database for datatable searchable
+    var $column_order = array(null, 'peserta_nama','peserta_hp','itikaf_mulai','konsumsi_ket'); //set column field database for datatable orderable
+    var $column_search = array( 'peserta_nama','peserta_hp','itikaf_mulai','konsumsi_ket'); //set column field database for datatable searchable
     var $order = array('peserta_id' => 'desc'); // default order
 
     public function __construct()
@@ -15,9 +15,9 @@ class Peserta_aktif_model extends CI_Model
 
     private function _get_datatables_query($post)
     {
-        $this->db->select("peserta_id,peserta_nama,CASE WHEN peserta_sex='l' THEN 'Ikhwan' ELSE 'Akhwat' END AS peserta_sex,kota_ket,peserta_hp,CASE WHEN peserta_status_pernikahan='1' THEN 'Menikah' WHEN peserta_status_pernikahan='2' THEN 'DUDA' WHEN peserta_status_pernikahan='3' THEN 'Janda' ELSE 'Belum Menikah' END AS peserta_status_pernikahan");
-        $this->db->join('kota', 'kota_id = peserta_kota', 'left');
+        $this->db->select("peserta_id,peserta_nama,peserta_hp,itikaf_mulai,konsumsi_ket,peserta_foto,peserta_ktp");
         $this->db->join('itikaf', 'itikaf_peserta = peserta_id', 'left');
+        $this->db->join('konsumsi', 'konsumsi_id = itikaf_konsumsi', 'left');
         $this->db->where('itikaf_tahun', date('Y'));
         $this->db->where('itikaf_status', 1);
         $this->db->from($this->table);
@@ -154,8 +154,12 @@ class Peserta_aktif_model extends CI_Model
 
     function get_peserta()
     {
+        $this->db->where('itikaf_tahun', date("Y"));
         $this->db->where('itikaf_status', 1);
         $this->db->join('itikaf', 'peserta_id = itikaf_peserta', 'left');
+        $this->db->join('kota', 'kota_id = peserta_kota', 'left');
+        $this->db->join('konsumsi', 'konsumsi_id = itikaf_konsumsi', 'left');
+        $this->db->join('sumber_informasi', 'si_id = itikaf_sumber_informasi', 'left');
         $qry = $this->db->get('peserta');
         return $qry->result();
     }

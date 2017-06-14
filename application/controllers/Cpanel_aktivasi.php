@@ -29,10 +29,10 @@ class Cpanel_aktivasi extends CI_Controller
             $no++;
             $row = array();
             $row[] = '<div class="uk-text-center">'.$no.'</div>';
-            $row[] = ucwords($aktivasi->peserta_nama);
-            $row[] = $aktivasi->jns_kelamin;
-            $row[] = ucwords($aktivasi->kota_ket);
+            $row[] = $aktivasi->peserta_nama;
             $row[] = $aktivasi->peserta_hp;
+            $row[] = $aktivasi->itikaf_mulai;
+            $row[] = $aktivasi->konsumsi_ket;
             $row[] = $aktivasi->peserta_foto == "" ? "<div class=\"label label-warning\">Blm Upload Foto</div>" : "<div class=\"label label-success\">Sudah Upload Foto</div>";
             $row[] = $aktivasi->peserta_ktp == "" ? "<div class=\"label label-warning\">Blm Upload KTP</div>" : "<div class=\"label label-success\">Sudah Upload KTP</div>";
             $row[] = "<a href=\"".site_url("cpanel_aktivasi/proses/".$aktivasi->peserta_id)."\" class=\"btn btn-primary\">Aktivasi</a>";

@@ -116,88 +116,88 @@ class Pendaftaran extends CI_Controller
                 $where_p["peserta_status_pernikahan"] = $status_pernikahan;
                 $row_peserta = $this->pm->get_row_peserta($where_p);
 
-                // proses upload
-                $config_photo['file_name']            = "photo_".$row_peserta->peserta_id;
-                $config_photo['upload_path']          = './upload/photo';
-                $config_photo['allowed_types']        = 'gif|jpg|png';
-                $config_photo['max_size']             = 1024;
-                $config_photo['max_width']            = 2048;
-                $config_photo['max_height']           = 1024;
-
-                $this->load->library('upload', $config_photo);
-
-                if ( ! $this->upload->do_upload('upload_photo'))
-                {
-                    // jika error maka hapus data peserta yang sudah tersimpan
-                    $this->pm->delete_peserta(array("peserta_id"=>$row_peserta->peserta_id));
-
-                    $data["row_logo"] = $this->pm->get_logo();
-            		$data["res_tm"] = $this->pm->get_tm();
-            		$data["res_fa"] = $this->pm->get_fa();
-                    $data['error'] = $this->upload->display_errors();
-
-                    $this->load->view('template/header', $data);
-                    if ($this->session->userdata('is_logged_in') === TRUE)
-                    {
-                        $this->load->view('pendaftaran/form_aktif', $data);
-                    }
-                    else
-                    {
-                        $this->load->view('pendaftaran/form', $data);
-                    }
-                    $this->load->view('template/footer', $data);
-                }
-                else
-                {
-                    // $path_photo = "./upload/photo/photo_".$row_peserta->peserta_id;
-                    // unlink($path_photo);
-
-                    $upload_data = $this->upload->data();
-                    $where_peserta["peserta_id"] = $row_peserta->peserta_id;
-                    $data_photo["peserta_foto"] = $upload_data["file_name"];
-                    $this->pm->update_peserta($where_peserta, $data_photo);
-                }
-
-                $config_ktp['file_name']            = "ktp_".$row_peserta->peserta_id;
-                $config_ktp['upload_path']          = './upload/ktp';
-                $config_ktp['allowed_types']        = 'gif|jpg|png';
-                $config_ktp['max_size']             = 1024;
-                $config_ktp['max_width']            = 2048;
-                $config_ktp['max_height']           = 1024;
-
-                $this->load->library('upload', $config_ktp);
-
-                if ( ! $this->upload->do_upload('upload_ktp'))
-                {
-                    // jika error maka hapus data peserta yang sudah tersimpan
-                    $this->pm->delete_peserta(array("peserta_id"=>$row_peserta->peserta_id));
-
-                    $data["row_logo"] = $this->pm->get_logo();
-            		$data["res_tm"] = $this->pm->get_tm();
-            		$data["res_fa"] = $this->pm->get_fa();
-                    $data['error'] = $this->upload->display_errors();
-
-                    $this->load->view('template/header', $data);
-                    if ($this->session->userdata('is_logged_in') === TRUE)
-                    {
-                        $this->load->view('pendaftaran/form_aktif', $data);
-                    }
-                    else
-                    {
-                        $this->load->view('pendaftaran/form', $data);
-                    }
-                    $this->load->view('template/footer', $data);
-                }
-                else
-                {
-                    // $path_ktp = "./upload/ktp/ktp_".$row_peserta->peserta_id;
-                    // unlink($path_ktp);
-
-                    $upload_data = $this->upload->data();
-                    $where_peserta["peserta_id"] = $row_peserta->peserta_id;
-                    $data_ktp["peserta_ktp"] = $upload_data["file_name"];
-                    $this->pm->update_peserta($where_peserta, $data_ktp);
-                }
+                // // proses upload
+                // $config_photo['file_name']            = "photo_".$row_peserta->peserta_id;
+                // $config_photo['upload_path']          = './upload/photo';
+                // $config_photo['allowed_types']        = 'gif|jpg|png';
+                // $config_photo['max_size']             = 5000;
+                // // $config_photo['max_width']            = 5000;
+                // // $config_photo['max_height']           = 5000;
+                //
+                // $this->load->library('upload', $config_photo);
+                //
+                // if ( ! $this->upload->do_upload('upload_photo'))
+                // {
+                //     // jika error maka hapus data peserta yang sudah tersimpan
+                //     $this->pm->delete_peserta(array("peserta_id"=>$row_peserta->peserta_id));
+                //
+                //     $data["row_logo"] = $this->pm->get_logo();
+            	// 	$data["res_tm"] = $this->pm->get_tm();
+            	// 	$data["res_fa"] = $this->pm->get_fa();
+                //     $data['error'] = $this->upload->display_errors();
+                //
+                //     $this->load->view('template/header', $data);
+                //     if ($this->session->userdata('is_logged_in') === TRUE)
+                //     {
+                //         $this->load->view('pendaftaran/form_aktif', $data);
+                //     }
+                //     else
+                //     {
+                //         $this->load->view('pendaftaran/form', $data);
+                //     }
+                //     $this->load->view('template/footer', $data);
+                // }
+                // else
+                // {
+                //     // $path_photo = "./upload/photo/photo_".$row_peserta->peserta_id;
+                //     // unlink($path_photo);
+                //
+                //     $upload_data = $this->upload->data();
+                //     $where_peserta["peserta_id"] = $row_peserta->peserta_id;
+                //     $data_photo["peserta_foto"] = $upload_data["file_name"];
+                //     $this->pm->update_peserta($where_peserta, $data_photo);
+                // }
+                //
+                // $config_ktp['file_name']            = "ktp_".$row_peserta->peserta_id;
+                // $config_ktp['upload_path']          = './upload/ktp';
+                // $config_ktp['allowed_types']        = 'gif|jpg|png';
+                // $config_photo['max_size']             = 5000;
+                // // $config_photo['max_width']            = 5000;
+                // // $config_photo['max_height']           = 5000;
+                //
+                // $this->load->library('upload', $config_ktp);
+                //
+                // if ( ! $this->upload->do_upload('upload_ktp'))
+                // {
+                //     // jika error maka hapus data peserta yang sudah tersimpan
+                //     $this->pm->delete_peserta(array("peserta_id"=>$row_peserta->peserta_id));
+                //
+                //     $data["row_logo"] = $this->pm->get_logo();
+            	// 	$data["res_tm"] = $this->pm->get_tm();
+            	// 	$data["res_fa"] = $this->pm->get_fa();
+                //     $data['error'] = $this->upload->display_errors();
+                //
+                //     $this->load->view('template/header', $data);
+                //     if ($this->session->userdata('is_logged_in') === TRUE)
+                //     {
+                //         $this->load->view('pendaftaran/form_aktif', $data);
+                //     }
+                //     else
+                //     {
+                //         $this->load->view('pendaftaran/form', $data);
+                //     }
+                //     $this->load->view('template/footer', $data);
+                // }
+                // else
+                // {
+                //     // $path_ktp = "./upload/ktp/ktp_".$row_peserta->peserta_id;
+                //     // unlink($path_ktp);
+                //
+                //     $upload_data = $this->upload->data();
+                //     $where_peserta["peserta_id"] = $row_peserta->peserta_id;
+                //     $data_ktp["peserta_ktp"] = $upload_data["file_name"];
+                //     $this->pm->update_peserta($where_peserta, $data_ktp);
+                // }
 
                 $arr_data_i['itikaf_peserta'] = $row_peserta->peserta_id;
                 $arr_data_i['itikaf_tahun'] = date('Y');

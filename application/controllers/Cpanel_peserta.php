@@ -29,10 +29,11 @@ class Cpanel_peserta extends CI_Controller
             $row = array();
             $row[] = '<div class="uk-text-center">'.$no.'</div>';
             $row[] = $peserta->peserta_nama;
-            $row[] = $peserta->peserta_sex;
-            $row[] = $peserta->kota_ket;
             $row[] = $peserta->peserta_hp;
-            $row[] = $peserta->peserta_status_pernikahan;
+            $row[] = $peserta->itikaf_mulai;
+            $row[] = $peserta->konsumsi_ket;
+            $row[] = $peserta->peserta_foto;
+            $row[] = $peserta->peserta_ktp;
             $row[] = $peserta->status;
             $row[] = "
                 <div class=\"btn-group\" role=\"group\" aria-label=\"...\">
@@ -113,7 +114,7 @@ class Cpanel_peserta extends CI_Controller
         $peserta_kartu_identitas = $this->input->post('peserta_kartu_identitas');
         $peserta_no_kartu_identitas = trim($this->input->post('peserta_no_kartu_identitas'));
         $peserta_email = strtolower(trim($this->input->post('peserta_email')));
-        $peserta_website = strtolower($this->input->post('peserta_website'));
+        // $peserta_website = strtolower($this->input->post('peserta_website'));
         $peserta_telepon = trim($this->input->post('peserta_telepon'));
         $peserta_hp = trim($this->input->post('peserta_hp'));
         $peserta_pendidikan = trim($this->input->post('peserta_pendidikan'));

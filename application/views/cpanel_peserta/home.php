@@ -21,10 +21,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <tr>
                             <th>No</th>
                             <th>Nama</th>
-                            <th>Jns Kelamin</th>
-                            <th>Kota</th>
                             <th>HP</th>
-                            <th>Status Pernikahan</th>
+                            <th>Mulai I'tikaf</th>
+                            <th>Pengaturan Konsumsi</th>
+                            <th>Upload Foto</th>
+                            <th>Upload KTP</th>
                             <th>Status</th>
                             <th style="width:150px;">Action</th>
                         </tr>

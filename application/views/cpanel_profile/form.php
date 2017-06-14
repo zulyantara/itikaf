@@ -12,7 +12,7 @@ $peserta_kota = isset($res_profile) ? $res_profile->peserta_kota : "";
 $peserta_kartu_identitas = isset($res_profile) ? $res_profile->peserta_kartu_identitas : "";
 $peserta_no_kartu_identitas = isset($res_profile) ? $res_profile->peserta_no_kartu_identitas : "";
 $peserta_email = isset($res_profile) ? $res_profile->peserta_email : "";
-$peserta_website = isset($res_profile) ? $res_profile->peserta_website : "";
+// $peserta_website = isset($res_profile) ? $res_profile->peserta_website : "";
 $peserta_telepon = isset($res_profile) ? $res_profile->peserta_telepon : "";
 $peserta_hp = isset($res_profile) ? $res_profile->peserta_hp : "";
 $peserta_pendidikan = isset($res_profile) ? $res_profile->peserta_pendidikan : "";
@@ -41,7 +41,7 @@ $tgl_lahir = $tgl->format('d');
             </div>
 
             <div class="box-body">
-                <form class="form-horizontal" action="<?php echo site_url('cpanel_peserta/simpan'); ?>" method="post">
+                <form class="form-horizontal" action="<?php echo site_url('cpanel_profile/simpan'); ?>" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="peserta_id" value="<?php echo $peserta_id; ?>">
                     <div class="panel panel-success">
                         <div class="panel-heading panel-heading-tara">
@@ -263,7 +263,7 @@ $tgl_lahir = $tgl->format('d');
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label class="control-label col-sm-2" for="peserta_website">Website</label>
                                 <div class="col-sm-10">
                                     <div class="row">
@@ -272,7 +272,7 @@ $tgl_lahir = $tgl->format('d');
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="peserta_telepon">Telepon</label>
@@ -358,22 +358,38 @@ $tgl_lahir = $tgl->format('d');
 
                     <div class="panel panel-success">
                         <div class="panel-heading panel-heading-tara">
-                            <h3 class="panel-title">Upload</h3>
+                            <h3 class="panel-title">Upload (Photo & KTP Ukuran Maksimal 1024MB / 1 Mb)</h3>
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="peserta_foto">Photo</label>
                                 <div class="col-sm-10">
-                                    <img class="uk-thumbnail" src="<?php echo base_url("upload/photo/".$peserta_foto); ?>" alt="Photo">
-                                    <a href="<?php echo site_url("cpanel_peserta/form_upload/".$peserta_id); ?>" class="btn btn-primary btn-flat">Upload</a>
+                                    <div class="row">
+                                        <div class="col-xs-10">
+                                            <img class="uk-thumbnail" src="<?php echo base_url("upload/photo/".$peserta_foto); ?>" alt="Photo">
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top: 5px;">
+                                        <div class="col-xs-2">
+                                            <input type="file" name="upload_photo">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="peserta_foto">Kartu Identitas</label>
                                 <div class="col-sm-10">
-                                    <img class="uk-thumbnail" src="<?php echo base_url("upload/photo/".$peserta_ktp); ?>" alt="Kartu Identitas">
-                                    <a href="<?php echo site_url("cpanel_peserta/form_upload/".$peserta_id); ?>" class="btn btn-primary btn-flat">Upload</a>
+                                    <div class="row">
+                                        <div class="col-xs-10">
+                                            <img class="uk-thumbnail" src="<?php echo base_url("upload/photo/".$peserta_ktp); ?>" alt="Kartu Identitas">
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top: 5px;">
+                                        <div class="col-xs-2">
+                                            <input type="file" name="upload_ktp">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 

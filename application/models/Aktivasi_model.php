@@ -4,9 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Aktivasi_model extends CI_Model
 {
     var $table = 'peserta';
-    var $column_order = array(null, 'peserta_nama, jns_kelamin, kota_ket, peserta_hp'); //set column field database for datatable orderable
-    var $column_search = array('peserta_nama, jns_kelamin, kota_ket, peserta_hp'); //set column field database for datatable searchable
-    var $order = array('itikaf_id' => 'asc'); // default order
+    var $column_order = array(null, 'peserta_nama', 'peserta_hp', 'itikaf_mulai', 'konsumsi_ket', 'peserta_foto', 'peserta_ktp'); //set column field database for datatable orderable
+    var $column_search = array('peserta_nama', 'peserta_hp', 'itikaf_mulai', 'konsumsi_ket', 'peserta_foto', 'peserta_ktp'); //set column field database for datatable searchable
+    var $order = array('peserta_id' => 'asc'); // default order
 
     public function __construct()
     {
@@ -15,10 +15,9 @@ class Aktivasi_model extends CI_Model
 
     private function _get_datatables_query($post)
     {
-        $this->db->select("peserta_id, peserta_nama, CASE WHEN peserta_sex='l' THEN 'Ikhwan' ELSE 'Akhwat' END AS jns_kelamin, kota_ket, peserta_hp, peserta_foto, peserta_ktp, user_id");
-        $this->db->join('kota', 'kota_id = peserta_kota', 'left');
-        $this->db->join('itikaf', 'itikaf_peserta = peserta_id AND itikaf_tahun = '.date('Y'), 'left');
-        $this->db->join('users', 'user_peserta = peserta_id', 'left');
+        $this->db->select("peserta_id, peserta_nama, peserta_hp, itikaf_mulai, konsumsi_ket, peserta_foto, peserta_ktp");
+        $this->db->join('itikaf', 'itikaf_peserta = peserta_id');
+        $this->db->join('konsumsi', 'konsumsi_id = itikaf_konsumsi');
         $this->db->where('itikaf_tahun', date('Y'));
         $this->db->where('itikaf_status', 0);
         $this->db->from($this->table);
