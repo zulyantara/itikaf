@@ -32,8 +32,8 @@ class Cpanel_peserta_aktif extends CI_Controller
             $row[] = $peserta_aktif->peserta_hp;
             $row[] = $peserta_aktif->itikaf_mulai;
             $row[] = $peserta_aktif->konsumsi_ket;
-            $row[] = $aktivasi->peserta_foto == "" ? "<div class=\"label label-warning\">Blm Upload Foto</div>" : "<div class=\"label label-success\">Sudah Upload Foto</div>";
-            $row[] = $aktivasi->peserta_ktp == "" ? "<div class=\"label label-warning\">Blm Upload KTP</div>" : "<div class=\"label label-success\">Sudah Upload KTP</div>";
+            $row[] = $peserta_aktif->peserta_foto == "" ? "<div class=\"label label-warning\">Blm Upload Foto</div>" : "<div class=\"label label-success\">Sudah Upload Foto</div>";
+            $row[] = $peserta_aktif->peserta_ktp == "" ? "<div class=\"label label-warning\">Blm Upload KTP</div>" : "<div class=\"label label-success\">Sudah Upload KTP</div>";
             $row[] = "
                 <div class=\"btn-group\" role=\"group\" aria-label=\"...\">
                     <a href=\"".site_url("cpanel_peserta_aktif/edit_data/".$peserta_aktif->peserta_id)."\" class=\"btn btn-primary btn-flat btn-xs\">Edit</a>
