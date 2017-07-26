@@ -21,17 +21,13 @@
 		<![endif]-->
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
 		<script src="<?php echo base_url("assets/plugins/jQuery/jquery-3.1.1.min.js"); ?>"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="<?php echo base_url("assets/bootstrap/js/bootstrap.min.js"); ?>"></script>
 		<!-- Jquery Validate -->
 		<script src="<?php echo base_url("assets/plugins/validate/dist/jquery.validate.min.js"); ?>"></script>
 		<script src="<?php echo base_url("assets/plugins/validate/dist/additional-methods.min.js"); ?>"></script>
-
-		<script>
-		$(document).ready(function(){
-		});
-		</script>
 	</head>
 
 	<link rel="shortcut icon" href="<?php echo base_url("assets/img/favicon.png"); ?>" />

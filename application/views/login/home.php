@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>I'tikaf | Login</title>
+    <title>M U T A N < Log in </title>
 
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url('assets/style.css'); ?>" rel="stylesheet">
@@ -21,13 +21,15 @@
         <div class="codrops-top">
             <span class="right">
                 <a href="<?php echo site_url('pendaftaran'); ?>">
-                    <strong>Back to the Pendaftaran Form</strong>
+                    <strong><h2>PENDAFTARAN</h2></strong>
                 </a>
             </span>
         </div><!--/ Codrops top bar -->
         <header>
-            <h1>Login Form <strong>CPanel</strong></h1>
-            <h2>Masjid At Ta'awun</h2>
+            <br><br><br>
+            <h1>AHLAN WA SAHLAN</h1>
+            <h1><strong>M U T A</strong> K I F I N A T T A A W U <strong>N</strong></h1>
+            <h2>Silahkan Login dengan informasi Login yang sudah Antum buat sebelumnya.<br>Jika belum memiliki Informasi Login, silahkan lakukan Pendaftaran terlebih dahulu.</h2>
             <h2><?php echo $error; ?></h2>
             <div class="support-note">
                 <span class="note-ie">Sorry, only modern browsers.</span>

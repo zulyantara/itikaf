@@ -9,6 +9,7 @@ class Cpanel_menu extends CI_Controller
         $this->_check_auth();
         $this->_cek_akses();
         $this->load->model('menu_model','mm');
+        $this->load->model('master_model');
     }
 
     function index()
@@ -88,7 +89,7 @@ class Cpanel_menu extends CI_Controller
 
         // hapus di table menu
         $this->mm->delete_menu($id);
-        
+
         redirect('cpanel_menu');
     }
 

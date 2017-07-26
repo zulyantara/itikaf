@@ -10,6 +10,7 @@ class Cpanel_pages extends CI_Controller
         $this->load->model('auth_model');
         $this->_check_auth();
         $this->_cek_akses();
+        $this->load->model('master_model');
     }
 
     function index()

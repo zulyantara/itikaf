@@ -9,6 +9,7 @@ class Cpanel_user_role extends CI_Controller
         $this->_check_auth();
         $this->_cek_akses();
         $this->load->model('user_role_model','mm');
+        $this->load->model('master_model');
     }
 
     function index()

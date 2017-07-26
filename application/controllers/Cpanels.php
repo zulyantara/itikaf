@@ -8,6 +8,7 @@ class Cpanels extends CI_Controller
         parent::__construct();
         $this->_check_auth();
         $this->load->model('cpanel_model', 'cm');
+        $this->load->model('master_model');
     }
 
     function index()
@@ -61,16 +62,16 @@ class Cpanels extends CI_Controller
         $data["chart_data_p"] = $chart_data_p;
 
         $total_peserta = $this->cm->get_row_total_peserta();
-        $data["total_peserta"] = $total_peserta->total;
+        $data["total_peserta"] = $total_peserta !== FALSE ? $total_peserta->total : 0;
 
         $total_peserta_aktif = $this->cm->get_row_total_peserta_aktif();
-        $data["total_peserta_aktif"] = $total_peserta_aktif->total;
+        $data["total_peserta_aktif"] = $total_peserta_aktif !== FALSE ? $total_peserta_aktif->total : 0;
 
         $total_peserta_l = $this->cm->get_row_total_peserta_l();
-        $data["total_peserta_l"] = $total_peserta_l->total;
+        $data["total_peserta_l"] = $total_peserta_l !== FALSE ? $total_peserta_l->total : 0;
 
         $total_peserta_p = $this->cm->get_row_total_peserta_p();
-        $data["total_peserta_p"] = $total_peserta_p->total;
+        $data["total_peserta_p"] = $total_peserta_p !== FALSE ? $total_peserta_p->total : 0;
 
         $data['ch'] = 'CPanel';
         $data["cho"] = "Dashboard I'tikaf";

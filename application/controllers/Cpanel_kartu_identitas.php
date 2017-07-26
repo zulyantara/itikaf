@@ -9,6 +9,7 @@ class Cpanel_kartu_identitas extends CI_Controller
         $this->_check_auth();
         $this->_cek_akses();
         $this->load->model('kartu_identitas_model','mm');
+        $this->load->model('master_model');
     }
 
     function index()

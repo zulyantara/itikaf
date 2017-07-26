@@ -41,6 +41,7 @@ class Cpanel_model extends CI_Model
         $this->db->where('itikaf_status', 1);
         $this->db->group_by('itikaf_tahun');
         $this->db->join('peserta', 'peserta_id = itikaf_peserta', 'left');
+        // echo $this->db->get_compiled_select("itikaf");exit;
         $qry = $this->db->get('itikaf');
         return $qry->num_rows() > 0 ? $qry->row() : FALSE;
     }

@@ -1,6 +1,4 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?>
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
 <div class="row">
     <div class="col-md-12">
@@ -328,8 +326,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="col-sm-10">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <select class="form-control" name="konsumsi" id="konsumsi">
-                                                <option>Pilih Pengaturan Konsumsi</option>
+                                            <select class="form-control" name="konsumsi" id="konsumsi" required="required">
                                                 <?php
                                                 if ($res_konsumsi !== FALSE)
                                                 {
@@ -353,7 +350,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="row">
                                         <div class="col-sm-4">
                                             <select class="form-control" name="sumber_informasi" id="sumber_informasi">
-                                                <option>Pilih Sumber Informasi</option>
                                                 <?php
                                                 if ($res_si !== FALSE)
                                                 {
@@ -426,11 +422,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
 
                             <div class="form-group">
-                                <label class="col-sm-2 control-label" for="confirm_password">Repeat Password</label>
+                                <label class="col-sm-2 control-label" for="confirm_password">Confirm Password</label>
                                 <div class="col-sm-10">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <input type="password" id="confirm_password" placeholder="Repeat Password" class="form-control">
+                                            <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" class="form-control">
                                             <span id="helpRepeatPassword" class="help-block"></span>
                                         </div>
                                     </div>
@@ -445,7 +441,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="row">
                                 <div class="col-sm-12">
                                     <!-- Replace data-sitekey with your own one, generated at https://www.google.com/recaptcha/admin -->
-                                    <div class="g-recaptcha" data-sitekey="6LfLJSQUAAAAAJ-1wo7-Rgmz2jgTfiFh5mdurL2e"></div>
+                                    <!-- <div class="g-recaptcha" data-sitekey="6LfLJSQUAAAAAJ-1wo7-Rgmz2jgTfiFh5mdurL2e"></div> -->
+                                    <?php echo $widget; ?>
+                                    <?php echo $script; ?>
                                     <br>
                                     <button type="submit" name="simpan" value="simpan" class="btn btn-primary">Simpan</button>
                                 </div>
@@ -463,10 +461,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 </div>
 
-<script src='https://www.google.com/recaptcha/api.js'></script>
+<!-- <script src='https://www.google.com/recaptcha/api.js' async defer></script> -->
 
 <script type="text/javascript">
 $(document).ready(function () {
+    $("#frmPendaftaran").validate({
+        rules:{
+            username: {
+                required: true
+            },
+            password: {
+                required: true,
+                minlength: 5
+            },
+            confirm_password: {
+                required: true,
+                equalTo: "#password"
+            },
+            email: {
+                required: true,
+                email: true
+            }
+        }
+    });
+
     // cek email exist
     $("#email").blur(function(){
         var txt_email = $("#email").val();
@@ -501,35 +519,6 @@ $(document).ready(function () {
                 }
             }
         });
-    });
-
-    // cek repeat password
-    $("#frmPendaftaran").validate({
-        rules:{
-            username: {
-                required: true
-            },
-            password: {
-                required: true,
-                minlength: 5
-            },
-            confirm_password: {
-                required: true,
-                equalTo: "#password"
-            }
-        },
-        messages: {
-            username: {
-                required: "Please enter a username"
-            },
-            password: {
-                required: "Please provide a password"
-            },
-            confirm_password: {
-                required: "Please provide a password",
-                equalTo: "Please enter the same password as above"
-            },
-        }
     });
 });
 </script>

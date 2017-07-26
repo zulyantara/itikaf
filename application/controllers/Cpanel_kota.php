@@ -9,6 +9,7 @@ class Cpanel_kota extends CI_Controller
         $this->_check_auth();
         $this->_cek_akses();
         $this->load->model('kota_model','mm');
+        $this->load->model('master_model');
     }
 
     function index()

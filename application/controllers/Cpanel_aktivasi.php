@@ -9,6 +9,7 @@ class Cpanel_aktivasi extends CI_Controller
         $this->_check_auth();
         $this->_cek_akses();
         $this->load->model('aktivasi_model','mm');
+        $this->load->model('master_model');
     }
 
     function index()
@@ -35,7 +36,7 @@ class Cpanel_aktivasi extends CI_Controller
             $row[] = $aktivasi->konsumsi_ket;
             $row[] = $aktivasi->peserta_foto == "" ? "<div class=\"label label-warning\">Blm Upload Foto</div>" : "<div class=\"label label-success\">Sudah Upload Foto</div>";
             $row[] = $aktivasi->peserta_ktp == "" ? "<div class=\"label label-warning\">Blm Upload KTP</div>" : "<div class=\"label label-success\">Sudah Upload KTP</div>";
-            $row[] = "<a href=\"".site_url("cpanel_aktivasi/proses/".$aktivasi->peserta_id)."\" class=\"btn btn-primary\">Aktivasi</a>";
+            $row[] = "<a href=\"".site_url("cpanel_aktivasi/proses/".$aktivasi->peserta_id)."\" class=\"btn btn-primary btn-xs\">Aktivasi</a>";
 
             $data[] = $row;
         }

@@ -9,6 +9,7 @@ class Cpanel_peserta_aktif extends CI_Controller
         $this->_check_auth();
         $this->_cek_akses();
         $this->load->model('peserta_aktif_model','mm');
+        $this->load->model('master_model');
     }
 
     function index()

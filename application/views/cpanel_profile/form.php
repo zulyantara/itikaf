@@ -387,7 +387,7 @@ $tgl_lahir = $tgl->format('d');
                                     </div>
                                     <div class="row" style="margin-top: 5px;">
                                         <div class="col-xs-2">
-                                            <input type="file" name="upload_ktp">
+                                            <input type="file" name="upload_ktp" required="required">
                                         </div>
                                     </div>
                                 </div>

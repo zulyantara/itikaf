@@ -1,5 +1,9 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-<?php $user_image = $this->session->userdata('pesertaFoto') != "" ? $this->session->userdata('pesertaFoto') : "avatar.png"; ?>
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+
+$user_image = $this->session->userdata('pesertaFoto') != "" ? $this->session->userdata('pesertaFoto') : "avatar.png";
+$jml = $this->master_model->count_peserta_0();
+$jml_daftar = $this->master_model->count_peserta_today();
+?>
 
 <!DOCTYPE html>
 <!--
@@ -98,25 +102,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
                         <!-- Notifications Menu -->
-                        <!-- <li class="dropdown notifications-menu">
+                        <li class="dropdown notifications-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-bell-o"></i>
-                                <span class="label label-warning">10</span>
+                                <span class="label label-warning"><?php echo $jml+$jml_daftar; ?></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li class="header">You have 10 notifications</li>
+                                <li class="header">You have <?php echo $jml+$jml_daftar; ?> notifications</li>
                                 <li>
                                     <ul class="menu">
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                                            </a>
-                                        </li>
+                                        <li><a href="<?php echo site_url("cpanel_aktivasi"); ?>"><i class="fa fa-users text-aqua"></i> <?php echo $jml; ?> peserta tidak aktif</a></li>
+                                        <li><a href="<?php echo site_url("cpanel_peserta_aktif"); ?>"><i class="fa fa-users text-aqua"></i> <?php echo $jml_daftar; ?> peserta baru hari ini</a></li>
                                     </ul>
                                 </li>
-                                <li class="footer"><a href="#">View all</a></li>
+                                <!-- <li class="footer"><a href="#">View all</a></li> -->
                             </ul>
-                        </li> -->
+                        </li>
 
                         <!-- User Account Menu -->
                         <li class="dropdown user user-menu">
@@ -247,6 +248,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         }
                                         ?>
                                         <span><?php echo ucwords($val_menu->menu_ket); ?></span>
+                                        <?php
+                                        if ($val_menu->menu_url === "cpanel_aktivasi" && $jml !== 0)
+                                        {
+                                            ?>
+                                            <span class="pull-right-container">
+                                                <small class="label pull-right bg-red"><?php echo $jml; ?></small>
+                                            </span>
+                                            <?php
+                                        }
+
+                                        if ($val_menu->menu_url === "cpanel_peserta" && $jml_daftar !==0)
+                                        {
+                                            ?>
+                                            <span class="pull-right-container">
+                                                <small class="label pull-right bg-red"><?php echo $jml_daftar; ?></small>
+                                            </span>
+                                            <?php
+                                        }
+                                        ?>
                                     </a>
                                 </li>
                                 <?php

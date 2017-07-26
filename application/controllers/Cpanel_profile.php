@@ -9,6 +9,7 @@ class Cpanel_profile extends CI_Controller
         $this->_check_auth();
         $this->_cek_akses();
         $this->load->model('profile_model','mm');
+        $this->load->model('master_model');
     }
 
     function index()
