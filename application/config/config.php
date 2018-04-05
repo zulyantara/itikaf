@@ -23,7 +23,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/itikaf/';
+$protocol = (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS'])!== 'off') ? 'https' : 'http';
+$base_url = $protocol.'://'.$_SERVER['HTTP_HOST'];
+$base_url.= dirname($_SERVER['SCRIPT_NAME']);
+
+$config['base_url'] = $base_url;
 
 /*
 |--------------------------------------------------------------------------
