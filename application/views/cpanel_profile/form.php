@@ -19,11 +19,11 @@ $peserta_pendidikan = isset($res_profile) ? $res_profile->peserta_pendidikan : "
 $peserta_jurusan = isset($res_profile) ? $res_profile->peserta_jurusan : "";
 $peserta_organisasi = isset($res_profile) ? $res_profile->peserta_organisasi : "";
 $peserta_posisi = isset($res_profile) ? $res_profile->peserta_posisi : "";
-$peserta_foto = isset($res_profile) ? $res_profile->peserta_foto : "";
+// $peserta_foto = isset($res_profile) ? $res_profile->peserta_foto : "";
 $peserta_ktp = isset($res_profile) ? $res_profile->peserta_ktp : "";
 $btn = isset($res_profile) ? "ubah" : "simpan";
 
-$peserta_foto = is_null($peserta_foto) ? "placeholder_200x100.svg" : $peserta_foto;
+// $peserta_foto = is_null($peserta_foto) ? "placeholder_200x100.svg" : $peserta_foto;
 $peserta_ktp = is_null($peserta_ktp) ? "placeholder_200x100.svg" : $peserta_ktp;
 $tgl = new DateTime($peserta_tanggal_lahir);
 $thn_lahir = $tgl->format('Y');
@@ -361,7 +361,7 @@ $tgl_lahir = $tgl->format('d');
                             <h3 class="panel-title">Upload (Photo & KTP Ukuran Maksimal 1024MB / 1 Mb)</h3>
                         </div>
                         <div class="panel-body">
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label class="control-label col-sm-2" for="peserta_foto">Photo</label>
                                 <div class="col-sm-10">
                                     <div class="row">
@@ -375,7 +375,7 @@ $tgl_lahir = $tgl->format('d');
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="peserta_foto">Kartu Identitas</label>

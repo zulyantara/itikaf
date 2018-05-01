@@ -57,7 +57,7 @@ class Cpanel_profile extends CI_Controller
         $peserta_jurusan = trim($this->input->post('peserta_jurusan'));
         $peserta_organisasi = trim($this->input->post('peserta_organisasi'));
         $peserta_posisi = trim($this->input->post('peserta_posisi'));
-        $peserta_foto = $this->input->post('peserta_foto');
+        // $peserta_foto = $this->input->post('peserta_foto');
         $peserta_ktp = $this->input->post('peserta_ktp');
 
         // validasi tanggal lahir
@@ -94,40 +94,41 @@ class Cpanel_profile extends CI_Controller
         {
             $this->_cek_update();
 
+            /* Upload photo deprecated */
             // proses upload
-            $config_photo['file_name']            = "photo_".$peserta_id;
-            $config_photo['upload_path']          = './upload/photo';
-            $config_photo['allowed_types']        = 'gif|jpg|png';
-            $config_photo['max_size']             = 2048;
-            // $config_photo['max_width']            = 5000;
-            // $config_photo['max_height']           = 5000;
-
-            $this->load->library('upload', $config_photo);
-
-            if ( ! $this->upload->do_upload('upload_photo'))
-            {
-                $id = $this->session->userdata('pesertaId');
-
-                $data['ch'] = 'Modul Profile';
-                $data['cho'] = 'Edit Data';
-                $data['res_profile'] = $this->mm->get_detail_peserta("peserta_id=".$id);
-                $data["res_kota"] = $this->mm->get_kota();
-                $data["res_ki"] = $this->mm->get_kartu_identitas();
-                $data['error'] = $this->upload->display_errors();
-
-                $this->load->view('template/header', $data);
-                $this->load->view('cpanel_profile/form', $data);
-                $this->load->view('template/footer', $data);
-            }
-            else
-            {
-                // $path_photo = "./upload/photo/photo_".$peserta_id;
-                // unlink($path_photo);
-
-                $upload_data = $this->upload->data();
-                $data_photo["peserta_foto"] = $upload_data["file_name"];
-                $this->mm->update_peserta($peserta_id, $data_photo);
-            }
+            // $config_photo['file_name']            = "photo_".$peserta_id;
+            // $config_photo['upload_path']          = './upload/photo';
+            // $config_photo['allowed_types']        = 'gif|jpg|png';
+            // $config_photo['max_size']             = 2048;
+            // // $config_photo['max_width']            = 5000;
+            // // $config_photo['max_height']           = 5000;
+            //
+            // $this->load->library('upload', $config_photo);
+            //
+            // if ( ! $this->upload->do_upload('upload_photo'))
+            // {
+            //     $id = $this->session->userdata('pesertaId');
+            //
+            //     $data['ch'] = 'Modul Profile';
+            //     $data['cho'] = 'Edit Data';
+            //     $data['res_profile'] = $this->mm->get_detail_peserta("peserta_id=".$id);
+            //     $data["res_kota"] = $this->mm->get_kota();
+            //     $data["res_ki"] = $this->mm->get_kartu_identitas();
+            //     $data['error'] = $this->upload->display_errors();
+            //
+            //     $this->load->view('template/header', $data);
+            //     $this->load->view('cpanel_profile/form', $data);
+            //     $this->load->view('template/footer', $data);
+            // }
+            // else
+            // {
+            //     // $path_photo = "./upload/photo/photo_".$peserta_id;
+            //     // unlink($path_photo);
+            //
+            //     $upload_data = $this->upload->data();
+            //     $data_photo["peserta_foto"] = $upload_data["file_name"];
+            //     $this->mm->update_peserta($peserta_id, $data_photo);
+            // }
 
             $config_ktp['file_name']            = "ktp_".$peserta_id;
             $config_ktp['upload_path']          = './upload/ktp';

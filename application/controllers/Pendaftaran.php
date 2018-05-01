@@ -48,15 +48,15 @@ class Pendaftaran extends CI_Controller
 
     function proses_pendaftaran()
     {
-        $recaptcha = $this->input->post('g-recaptcha-response');
-        $response = $this->recaptcha->verifyResponse($recaptcha);
-
-        if ( ! isset($response['success']) || $response['success'] <> true)
-        {
-            $this->index();
-        }
-        else
-        {
+        // $recaptcha = $this->input->post('g-recaptcha-response');
+        // $response = $this->recaptcha->verifyResponse($recaptcha);
+        //
+        // if ( ! isset($response['success']) || $response['success'] <> true)
+        // {
+        //     $this->index();
+        // }
+        // else
+        // {
             // var_dump($_POST);exit;
             $simpan = $this->input->post('simpan');
             $nama = trim($this->input->post('nama_lengkap'));
@@ -264,7 +264,7 @@ class Pendaftaran extends CI_Controller
             {
                 redirect('pendaftaran');
             }
-        }
+        // }
     }
 
     function proses_pendaftaran_aktif()
