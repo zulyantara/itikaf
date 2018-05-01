@@ -392,7 +392,7 @@
 
                     <div class="panel panel-success">
                         <div class="panel-heading panel-heading-tara">
-                            <h3 class="panel-title">Informasi Login</h3>
+                            <h3 class="panel-title">Membuat Informasi Login</h3>
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
@@ -449,7 +449,7 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="alert alert-warning tara-margin-top" role="alert">
-                                        Dengan mengisi formulir ini, Anda menyatakan bahwa telah mengerti atas kepentingan seluruh informasi yang telah diberikan. <br>Dan setuju terhadap segala syarat dan ketentuan yang telah diberlakukan organisasi -MUTAN- selama menjalankan I’itikaf pada bulan Ramadhan.
+                                        Dengan mengisi formulir ini, Antum menyatakan telah mengerti atas kepentingan seluruh informasi yang telah diberikan. <br>Dan setuju terhadap segala syarat dan ketentuan yang berlaku.
                                     </div>
                                 </div>
                             </div>

@@ -8,7 +8,8 @@
 
                 <div class="jumbotron">
                     <h1>Pendaftaran Berhasil!</h1>
-                    <p>Informasi <?php echo ucwords($peserta_nama); ?> sedang kami proses
+                    <p>Informasi <?php echo ucwords($peserta_nama); ?> sedang kami proses.
+                    <p>Untuk selanjutnya, silahkan kontak Admin di nomor <strong>WhatsApp 0877-7070-0207.</strong>
                     <p><a class="btn btn-primary btn-lg" href="<?php echo site_url("cpanels"); ?>" role="button">Login</a></p>
                 </div>
 

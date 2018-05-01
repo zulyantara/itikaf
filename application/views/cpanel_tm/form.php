@@ -37,6 +37,9 @@ $btn = isset($res_tm) ? "ubah" : "simpan";
                         <div class="col-sm-10">
                             <div class="row">
                                 <div class="col-sm-5">
+                                    <input type="text" name="tm_url_ext"id="fl_link_ext" value="<?php echo $fl_link; ?>" class="form-control">
+                                </div>
+                                <div class="col-sm-5">
                                     <select class="form-control" name="tm_url" id="tm_url" required="required">
                                         <option>Pilih Pages</option>
                                         <?php
@@ -65,7 +68,7 @@ $btn = isset($res_tm) ? "ubah" : "simpan";
                         </div>
                     </div>
                 </form>
-            </div>
+            </div>     
         </div>
     </div>
 </div>

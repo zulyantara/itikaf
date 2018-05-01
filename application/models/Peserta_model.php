@@ -5,7 +5,7 @@ class Peserta_model extends CI_Model
 {
     var $table = 'peserta';
     var $column_order = array(null, 'peserta_nama','peserta_hp','itikaf_mulai','konsumsi_ket','peserta_foto', 'peserta_ktp', 'status'); //set column field database for datatable orderable
-    var $column_search = array( 'peserta_nama','peserta_hp','itikaf_mulai','konsumsi_ket','peserta_foto', 'peserta_ktp'); //set column field database for datatable searchable
+    var $column_search = array( 'peserta_nama','peserta_hp','itikaf_mulai','konsumsi_ket','peserta_foto', 'peserta_ktp', 'status'); //set column field database for datatable searchable
     var $order = array('peserta_id' => 'desc'); // default order
 
     public function __construct()
@@ -15,7 +15,7 @@ class Peserta_model extends CI_Model
 
     private function _get_datatables_query($post)
     {
-        $this->db->select("peserta_id,peserta_nama,peserta_hp,itikaf_mulai,konsumsi_ket,peserta_foto,peserta_ktp, CASE WHEN itikaf_status=1 THEN 'Aktif' WHEN itikaf_status=0 THEN 'Tidak Aktif' END AS status");
+        $this->db->select("peserta_id,peserta_nama,peserta_hp,itikaf_mulai,konsumsi_ket,peserta_foto,peserta_ktp, CASE WHEN itikaf_status=1 THEN 'Aktif' WHEN itikaf_status=2 THEN 'Tidak Aktif' END AS status");
         $this->db->join('itikaf', 'itikaf_peserta = peserta_id');
         $this->db->join('konsumsi', 'konsumsi_id = itikaf_konsumsi');
         $this->db->where('itikaf_tahun', date('Y'));
