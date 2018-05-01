@@ -21,6 +21,7 @@ class Cpanel_model extends CI_Model
     {
         $this->db->select('COUNT(*) AS total');
         $this->db->join('peserta', 'peserta_id = itikaf_peserta', 'left');
+        $this->db->where('itikaf_tahun', date("Y"));
         $qry = $this->db->get('itikaf');
         return $qry->num_rows() > 0 ? $qry->row() : FALSE;
     }
@@ -29,6 +30,7 @@ class Cpanel_model extends CI_Model
     {
         $this->db->select('COUNT(*) AS total');
         $this->db->where('itikaf_status', 1);
+        $this->db->where('itikaf_tahun', date("Y"));
         $this->db->join('peserta', 'peserta_id = itikaf_peserta', 'left');
         $qry = $this->db->get('itikaf');
         return $qry->num_rows() > 0 ? $qry->row() : FALSE;
@@ -39,6 +41,7 @@ class Cpanel_model extends CI_Model
         $this->db->select('COUNT(*) AS total');
         $this->db->where('peserta_sex', "l");
         $this->db->where('itikaf_status', 1);
+        $this->db->where('itikaf_tahun', date("Y"));
         $this->db->group_by('itikaf_tahun');
         $this->db->join('peserta', 'peserta_id = itikaf_peserta', 'left');
         $qry = $this->db->get('itikaf');
@@ -50,6 +53,7 @@ class Cpanel_model extends CI_Model
         $this->db->select('COUNT(*) AS total');
         $this->db->where('peserta_sex', "p");
         $this->db->where('itikaf_status', 1);
+        $this->db->where('itikaf_tahun', date("Y"));
         $this->db->join('peserta', 'peserta_id = itikaf_peserta', 'left');
         $qry = $this->db->get('itikaf');
         return $qry->num_rows() > 0 ? $qry->row() : FALSE;
