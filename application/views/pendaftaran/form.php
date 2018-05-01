@@ -400,7 +400,7 @@
                                 <div class="col-sm-10">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <input type="text" name="username" id="username" placeholder="Username" class="form-control">
+                                            <input type="text" name="username" id="username" placeholder="Username" class="form-control" style="text-transform: lowercase;">
                                             <span id="helpUsername" class="help-block"></span>
                                         </div>
                                     </div>
@@ -465,10 +465,15 @@
 
 <script type="text/javascript">
 $(document).ready(function () {
+    jQuery.validator.addMethod("noSpace", function(value, element) {
+        return value.indexOf(" ") < 0 && value != "";
+    }, "No space please and don't leave it empty");
+
     $("#frmPendaftaran").validate({
         rules:{
             username: {
-                required: true
+                required: true,
+                noSpace: true
             },
             password: {
                 required: true,
