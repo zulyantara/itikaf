@@ -18,7 +18,7 @@ class Peserta_model extends CI_Model
         $this->db->select("peserta_id,peserta_nama,peserta_hp,itikaf_mulai,konsumsi_ket,peserta_foto,peserta_ktp, CASE WHEN itikaf_status=1 THEN 'Aktif' WHEN itikaf_status=2 THEN 'Tidak Aktif' END AS status");
         $this->db->join('itikaf', 'itikaf_peserta = peserta_id');
         $this->db->join('konsumsi', 'konsumsi_id = itikaf_konsumsi');
-        $this->db->where('itikaf_tahun', date('Y'));
+        // $this->db->where('itikaf_tahun', date('Y'));
         // $this->db->where('itikaf_status', 1);
         $this->db->from($this->table);
 
