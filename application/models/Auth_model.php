@@ -111,4 +111,23 @@ class Auth_model extends CI_Model
         $qry = $this->db->get('footer_link');
         return $qry->num_rows() > 0 ? $qry->result() : FALSE;
     }
+
+    function cek_email($email)
+    {
+        $this->db->where("peserta_email", $email);
+        // echo $this->db->get_compiled_select("peserta");
+        return $this->db->get("peserta");
+    }
+
+    function update_users($where = NULL, $data)
+    {
+        if ($where !== NULL)
+        {
+            foreach ($where as $key => $value) {
+                $this->db->where($key, $value);
+            }
+        }
+        // echo $this->db->set($data)->get_compiled_update("users");exit;
+        $this->db->update("users", $data);
+    }
 }
