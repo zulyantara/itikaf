@@ -486,6 +486,12 @@ $(document).ready(function () {
             email: {
                 required: true,
                 email: true
+            },
+            telepon:{
+                number: true
+            },
+            hp: {
+                number: true
             }
         }
     });
