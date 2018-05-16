@@ -66,6 +66,7 @@ class Auth extends CI_Controller
 
     function form()
     {
+        $this->load->model('master_model');
         $data["panel_title"] = "User ".$this->session->userdata('userNama')." | Ubah Password";
 
         $this->load->view('template/header_cpanel', $data);
