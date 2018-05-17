@@ -115,6 +115,7 @@ class Auth_model extends CI_Model
     function cek_email($email)
     {
         $this->db->where("peserta_email", $email);
+        $this->db->join("users", "peserta_id=user_peserta");
         // echo $this->db->get_compiled_select("peserta");
         return $this->db->get("peserta");
     }

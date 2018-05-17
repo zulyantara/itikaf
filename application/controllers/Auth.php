@@ -89,16 +89,19 @@ class Auth extends CI_Controller
                         'protocol' => 'smtp',
                         'smtp_host' => 'ssl://smtp.googlemail.com',
                         'smtp_port' => 465,
-                        'smtp_user' => 'ajahtara@gmail.com', // change it to yours
-                        'smtp_pass' => '', // change it to yours
+                        'smtp_user' => 'no-reply@mutan.or.id', // change it to yours
+                        'smtp_pass' => '#mutanorid2025', // change it to yours
                         'mailtype' => 'html',
                         'charset' => 'iso-8859-1',
                         'wordwrap' => TRUE
                     );
-                    $message = 'Password : '.implode($pass);
+                    $data["nama"] = $cek_email->peserta_nama;
+                    $data["username"] = $cek_email->user_username;
+                    $data["password"] = implode($pass);
+                    $message = $this->load->view("cpanel/reset_email", $data, TRUE);
                     $this->load->library('email', $config);
                     $this->email->set_newline("\r\n");
-                    $this->email->from('ajahtara@gmail.com'); // change it to yours
+                    $this->email->from('no-reply@mutan.or.id'); // change it to yours
                     $this->email->to($email);// change it to yours
                     $this->email->subject('Reset Password mutan.or.id');
                     $this->email->message($message);
@@ -113,6 +116,7 @@ class Auth extends CI_Controller
                     }
                     else
                     {
+                        show_error($this->email->print_debugger());
                         ?>
                         <script type="text/javascript">
                             alert("Gagal kirim email");
