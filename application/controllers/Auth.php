@@ -90,7 +90,7 @@ class Auth extends CI_Controller
                         'smtp_host' => 'ssl://smtp.googlemail.com',
                         'smtp_port' => 465,
                         'smtp_user' => 'ajahtara@gmail.com', // change it to yours
-                        'smtp_pass' => 'Anugr4hny4En1', // change it to yours
+                        'smtp_pass' => '', // change it to yours
                         'mailtype' => 'html',
                         'charset' => 'iso-8859-1',
                         'wordwrap' => TRUE
