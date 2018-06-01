@@ -5,7 +5,7 @@ class Peserta_model extends CI_Model
 {
     var $table = 'peserta';
     var $column_order = array(null, 'peserta_nama','peserta_hp','itikaf_mulai','konsumsi_ket','peserta_foto', 'peserta_ktp', 'status'); //set column field database for datatable orderable
-    var $column_search = array( 'peserta_nama','peserta_hp','itikaf_mulai','konsumsi_ket','peserta_foto', 'peserta_ktp', 'status'); //set column field database for datatable searchable
+    var $column_search = array( 'peserta_nama','peserta_hp','itikaf_mulai','konsumsi_ket','peserta_foto', 'peserta_ktp'); //set column field database for datatable searchable
     var $order = array('peserta_id' => 'desc'); // default order
 
     public function __construct()
@@ -62,6 +62,7 @@ class Peserta_model extends CI_Model
         {
             $this->db->limit($post['length'], $post['start']);
         }
+        // echo $this->db->get_compiled_select($this->table);exit;
         $query = $this->db->get();
         return $query->result();
     }
