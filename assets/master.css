@@ -238,3 +238,12 @@ hr {
     font-weight: bold;
     color: #4E342E;
 }
+
+.panel-heading {
+  padding: 0px 15px;
+}
+
+.panel-body {
+  padding-left: 15px;
+  padding-top: 0;
+}
