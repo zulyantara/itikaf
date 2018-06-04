@@ -30,10 +30,10 @@
 									?>
 									<div class="col-md-<?php echo 12/$total_fhl; ?>">
 										<div class="panel panel-footer-tara">
-											<div class="panel-heading">
+											<div class="panel-heading tara-panel-heading">
 												<h3class="panel-title"><b><?php echo ucwords($val_fhl->fhl_header); ?></b></h3>
 											</div>
-											<div class="panel-body">
+											<div class="panel-body tara-panel-body">
 												<ul class="tara-ul-link">
 													<?php
 													$res_flink = $this->auth_model->get_flink($val_fhl->fhl_id);
@@ -88,7 +88,7 @@
 
 		</footer>
 		</div>
-		
+
 		<!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-16477609-4"></script>
         <script>
@@ -99,6 +99,6 @@
             gtag('config', 'UA-16477609-4');
         </script>
 
-		
+
 	</body>
 </html>

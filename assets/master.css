@@ -239,11 +239,15 @@ hr {
     color: #4E342E;
 }
 
-.panel-heading {
+.tara-panel-heading {
   padding: 0px 15px;
 }
 
-.panel-body {
+.tara-panel-body {
   padding-left: 15px;
   padding-top: 0;
+}
+
+.tara-panel-margin {
+  margin-bottom: 0;
 }
