@@ -276,8 +276,9 @@ class Pendaftaran extends CI_Controller
 
         // harus cek terlebih dahulu apakah data itikaf sudah ada?
         $wci["itikaf_tahun"] = date('Y');
+        $wci["itikaf_peserta"] = $this->session->userdata('pesertaId');
         $cek_itikaf = $this->pm->get_row_itikaf($wci);
-
+        // echo $cek_itikaf;exit;
         // jika data belum ada maka simpan data
         if ($cek_itikaf === 0)
         {
