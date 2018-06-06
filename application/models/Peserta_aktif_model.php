@@ -118,9 +118,15 @@ class Peserta_aktif_model extends CI_Model
         $this->db->delete('peserta');
     }
 
-    function delete_itikaf($id)
+    function delete_itikaf($where = FALSE)
     {
-        $this->db->where('itikaf_peserta', $id);
+        if ($where !== FALSE)
+        {
+            foreach ($where as $key => $value)
+            {
+                $this->db->where($key, $value);
+            }
+        }
         $this->db->delete('itikaf');
     }
 

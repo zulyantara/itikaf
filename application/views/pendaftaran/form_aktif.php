@@ -15,6 +15,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <h3 class="panel-title">Informasi I'itikaf</h3>
                         </div>
                         <div class="panel-body">
+                            <?php
+                            if ( ! is_null($this->session->flashdata('msg_pendaftaran')))
+                            {
+                              if ($this->session->flashdata('msg_pendaftaran') == "sukses")
+                              {
+                                ?>
+                                <div class="alert alert-success" role="alert">Pendaftaran berhasil</div>
+                                <?php
+                              }
+                              elseif ($this->session->flashdata('msg_pendaftaran') == "gagal")
+                              {
+                                ?>
+                                <div class="alert alert-danger" role="alert">Pendaftaran gagal, silahkan hubungi administrator!</div>
+                                <?php
+                              }
+                            }
+                            ?>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" for="mulai_itikaf">Mulai I'itikaf pada Hari ke-</label>
                                 <div class="col-sm-10">

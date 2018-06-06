@@ -7,6 +7,7 @@ class Pendaftaran extends CI_Controller
     {
         parent::__construct();
         $this->load->model('pendaftaran_model', "pm");
+        $this->load->model('peserta_model', "psm");
         $this->load->model('auth_model');
 
         $this->load->config("recaptcha");
@@ -273,10 +274,11 @@ class Pendaftaran extends CI_Controller
         $mulai_itikaf = $this->input->post('mulai_itikaf');
         $konsumsi = $this->input->post('konsumsi');
         $sumber_informasi = $this->input->post('sumber_informasi');
+        $peserta_id = $this->session->userdata('pesertaId');
 
         // harus cek terlebih dahulu apakah data itikaf sudah ada?
         $wci["itikaf_tahun"] = date('Y');
-        $wci["itikaf_peserta"] = $this->session->userdata('pesertaId');
+        $wci["itikaf_peserta"] = $peserta_id;
         $cek_itikaf = $this->pm->get_row_itikaf($wci);
         // echo $cek_itikaf;exit;
         // jika data belum ada maka simpan data
@@ -284,7 +286,7 @@ class Pendaftaran extends CI_Controller
         {
             if ($simpan = 'simpan')
             {
-                $arr_data_i['itikaf_peserta'] = $this->session->userdata('pesertaId');
+                $arr_data_i['itikaf_peserta'] = $peserta_id;
                 $arr_data_i['itikaf_tahun'] = date('Y');
                 $arr_data_i['itikaf_mulai'] = $mulai_itikaf;
                 $arr_data_i['itikaf_konsumsi'] = $konsumsi;
@@ -295,10 +297,21 @@ class Pendaftaran extends CI_Controller
                 // insert ke table itikaf
                 $this->pm->insert_itikaf($arr_data_i);
 
-                redirect('pendaftaran');
+                $res_peserta = $this->psm->get_detail_peserta(array("peserta_id"=> $peserta_id));
+
+                $data['peserta_nama'] = $res_peserta->peserta_nama;
+                $data["row_logo"] = $this->pm->get_logo();
+                $data["res_tm"] = $this->pm->get_tm();
+                $data["res_fa"] = $this->pm->get_fa();
+                $this->load->view('template/header', $data);
+                $this->load->view('pendaftaran/form_success', $data);
+                $this->load->view('template/footer', $data);
+
+                // redirect('pendaftaran');
             }
             else
             {
+                $this->session->set_flashdata('msg_pendaftaran', 'gagal');
                 redirect('pendaftaran');
             }
         }
