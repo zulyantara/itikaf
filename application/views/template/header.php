@@ -122,6 +122,7 @@
 								}
 
 								?>
+								<li><a href="<?php echo base_url("cpanels"); ?>">LOGIN</a></li>
 							</ul>
 						</div>
 					</div>

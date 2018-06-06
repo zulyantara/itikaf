@@ -22,20 +22,41 @@ class Cpanel_peserta extends CI_Controller
 
     public function ajax_list()
     {
+      $this->load->library('user_agent');
+
+        if ($this->agent->is_browser())
+        {
+                $agent = $this->agent->browser();
+        }
+        elseif ($this->agent->is_robot())
+        {
+                $agent = $this->agent->robot();
+        }
+        elseif ($this->agent->is_mobile())
+        {
+                $agent = $this->agent->mobile();
+        }
+        else
+        {
+                $agent = 'Unidentified User Agent';
+        }
+
         $list = $this->mm->get_datatables($this->input->post());
         $data = array();
         $no = $this->input->post('start');
         foreach ($list as $peserta) {
+            $peserta_hp = preg_replace('/^0/','62',$peserta->peserta_hp);
+            $link_wa_mozilla = "<a href=\"https://web.whatsapp.com/send?phone=".$peserta_hp."\" target=\"_blank\">WhatsApp</a>";
+            $link_wa = "<a href=\"https://api.whatsapp.com/send?phone=".$peserta_hp."\" target=\"_blank\">WhatsApp</a>";
             $no++;
             $row = array();
             $row[] = '<div class="uk-text-center">'.$no.'</div>';
             $row[] = $peserta->peserta_nama;
+            $row[] = $agent == "Firefox" ? $link_wa_mozilla : $link_wa;
             $row[] = $peserta->peserta_hp;
-            $row[] = $peserta->itikaf_mulai;
-            $row[] = $peserta->konsumsi_ket;
+            $row[] = date("d-m-Y", strtotime($peserta->peserta_insert_date));
             $row[] = $peserta->peserta_foto == "" ? "<div class=\"label label-warning\">Blm Upload Foto</div>" : "<div class=\"label label-success\">Sudah Upload Foto</div>";
             $row[] = $peserta->peserta_ktp == "" ? "<div class=\"label label-warning\">Blm Upload KTP</div>" : "<div class=\"label label-success\">Sudah Upload KTP</div>";
-            $row[] = $peserta->status;
             $row[] = "
                 <div class=\"btn-group\" role=\"group\" aria-label=\"...\">
                     <a href=\"".site_url("cpanel_peserta/edit_data/".$peserta->peserta_id)."\" class=\"btn btn-primary btn-flat btn-xs\">Edit</a>
