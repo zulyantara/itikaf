@@ -69,8 +69,8 @@ class Cpanel_slider extends CI_Controller
             $config['upload_path']          = './slider';
             $config['allowed_types']        = 'gif|jpg|png';
             $config['max_size']             = 1024;
-            $config['max_width']            = 800;
-            $config['max_height']           = 400;
+            $config['max_width']            = 1140;
+            $config['max_height']           = 570;
 
             $this->load->library('upload', $config);
 
@@ -89,14 +89,15 @@ class Cpanel_slider extends CI_Controller
                 $upload_data = $this->upload->data();
 
                 // hitung data slider
-                $jml_slider = $this->mm->count_data(FALSE);
+                $jml_slider = $this->mm->count_data();
+
                 if ($jml_slider == 0)
                 {
-                    $data["slider_active"] = 1;
+                    $data_slider["slider_active"] = 1;
                 }
                 else
                 {
-                    $data["slider_active"] = 0;
+                    $data_slider["slider_active"] = 0;
                 }
                 $data_slider["slider_src"] = $upload_data["file_name"];
                 $data_slider["slider_alt"] = strtolower($this->input->post('alt'));

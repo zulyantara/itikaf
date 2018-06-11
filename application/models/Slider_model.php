@@ -109,7 +109,7 @@ class Slider_model extends CI_Model
         $this->db->truncate('slider');
     }
 
-    function count_data($where)
+    function count_data($where = FALSE)
     {
         if ($where !== FALSE)
         {
