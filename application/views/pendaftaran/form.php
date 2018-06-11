@@ -228,7 +228,7 @@
                                 <div class="col-sm-10">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <input type="text" name="hp" id="hp" placeholder="HP" class="form-control">
+                                            <input type="text" name="hp" id="hp" placeholder="HP" class="form-control" required="required">
                                         </div>
                                     </div>
                                 </div>
